@@ -20,7 +20,9 @@ function choose(){
 function onSuccess(imageData) {
     console.log('image successfully taken');
 //    currentImage = imageData;
-    location.href = '#submit';
+    console.log('trying to change page');
+    $.mobile.changePage( "#submit", { transition: "slide"} );
+    console.log('changed page')
 }
 
 function onFail(message) {
@@ -56,8 +58,10 @@ function submit(){
 function postSuccess(jsonResponse){
     //todo show link to picture and removal link
 
-    location.href = '#successful'
+    $.mobile.changePage( "#successful", { transition: "slide"} );
+//    location.href = '#successful'
     setTimeout(function(){
-        location.href = '#main';
+        $.mobile.changePage( "#main", { transition: "slide"} );
+//        location.href = '#main';
     }, 3000)
 }
