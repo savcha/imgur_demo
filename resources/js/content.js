@@ -3,7 +3,7 @@ var currentImage;
 
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(submit, onFail, {
+    navigator.camera.getPicture(onSuccess, onFail, {
         sourceType : Camera.PictureSourceType.CAMERA,
         destinationType : Camera.DestinationType.DATA_URL
     });
@@ -20,7 +20,8 @@ function choose(){
 function onSuccess(imageData) {
     console.log('image successfully taken');
     currentImage = imageData;
-    var img = document.getElementById('image');
+    var image = document.getElementById('image');
+    image.src = image.src = "data:image/jpeg;base64," + currentImage;
 //    $.mobile.changePage( "#submit", { transition: "slide"} );
     location.href = '#submit';
     console.log('changed page')
@@ -34,15 +35,19 @@ function submit(){
 
     console.log('submit called');
 
+    var title = $('#image_title').val();
+    var caption = $('#image_title').val();
+
+    console.log('title is '+title+', caption is '+caption);
+
     $.ajax({
         url: 'http://api.imgur.com/2/upload.json',
         type: 'POST',
         data: {
             key: API_KEY,
             type: 'base64',
-            name: 'test',
-            title: 'imgur upload test',
-            caption: 'uploaded from android',
+            title: title,
+            caption: caption,
             image: currentImage
         },
         success: function(data){
@@ -60,7 +65,7 @@ function postSuccess(jsonResponse){
     //todo show link to picture and removal link
 
 //    $.mobile.changePage( "#successful", { transition: "slide"} );
-    location.href = '#successful'
+    location.href = '#submitted'
     setTimeout(function(){
         $.mobile.changePage( "#main", { transition: "slide"} );
 //        location.href = '#main';
