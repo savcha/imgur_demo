@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+div input {
+    display: block;
+}
+
+#logo {
+    border: 5px;
+    margin: 5px;
+    text-align: center;
+}
