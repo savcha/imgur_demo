@@ -1,13 +1,13 @@
 var API_KEY = 'ecb3c9429017e1310b52e91afeb50175';
-//var currentImage;
+var currentImage;
 
-function snap(){
+/*function snap(){
     console.log('snap called');
     navigator.camera.getPicture(onSuccess, onFail, {
         sourceType : Camera.PictureSourceType.CAMERA,
         destinationType : Camera.DestinationType.DATA_URL
     });
-}
+}*/
 
 function choose(){
     console.log('choose called');
@@ -19,12 +19,11 @@ function choose(){
 
 function onSuccess(imageData) {
     console.log('image successfully taken');
-    /*currentImage = imageData;
+    currentImage = imageData;
     var image = document.getElementById('image');
-    image.src = image.src = "data:image/jpeg;base64," + currentImage;
+    image.src = image.src = "data:image/jpeg;base64," + imageData;
 //    $.mobile.changePage( "#submit", { transition: "slide"} );
     location.href = '#submit';
-    console.log('changed page')*/
 }
 
 function onFail(message) {
