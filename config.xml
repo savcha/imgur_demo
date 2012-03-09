@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+        xmlns:gap	= "http://phonegap.com/ns/1.0"
+        id		= "com.imgur.demo"
+        version 	= "1.0.0">
+
+    <name>Imgur</name>
+
+    <description>
+        Upload images taken from your mobile device to Imgur
+    </description>
+
+    <author href="https://github.com/savcha"
+            email="savchenko.a@husky.neu.edu">
+        Anton Savchenko
+    </author>
+
+    <icon src="icon.png" gap:role="default" />
+
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+
+    <preference name="orientation" value="portrait" />
+</widget>
