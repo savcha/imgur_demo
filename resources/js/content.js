@@ -11,7 +11,7 @@ function snap(){
 
 function choose(){
     console.log('choose called');
-    navigator.camera.getPicture(submit, onFail, {
+    navigator.camera.getPicture(onSuccess, onFail, {
         sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
         destinationType : Camera.DestinationType.DATA_URL
     });
