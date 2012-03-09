@@ -1,5 +1,5 @@
 var API_KEY = 'ecb3c9429017e1310b52e91afeb50175';
-var currentImage;
+//var currentImage;
 
 function snap(){
     console.log('snap called');
@@ -19,19 +19,19 @@ function choose(){
 
 function onSuccess(imageData) {
     console.log('image successfully taken');
-    currentImage = imageData;
+    /*currentImage = imageData;
     var image = document.getElementById('image');
     image.src = image.src = "data:image/jpeg;base64," + currentImage;
 //    $.mobile.changePage( "#submit", { transition: "slide"} );
     location.href = '#submit';
-    console.log('changed page')
+    console.log('changed page')*/
 }
 
 function onFail(message) {
     alert('Failed because: ' + message);
 }
 
-function submit(){
+/*function submit(){
 
     console.log('submit called');
 
@@ -70,4 +70,4 @@ function postSuccess(jsonResponse){
         $.mobile.changePage( "#main", { transition: "slide"} );
 //        location.href = '#main';
     }, 3000)
-}
+}*/
