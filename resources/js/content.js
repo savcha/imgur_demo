@@ -27,8 +27,9 @@ function choose(){
 
 function onSuccess(imageData) {
     console.log('image successfully taken');
-    var image = document.getElementById('image');
+    var image = document.createElement('img');//document.getElementById('image');
     image.src = "data:image/jpeg;base64," + imageData;
+    document.getElementsByTagName('body')[0].appendChild(image);
 }
 
 function onFail(message) {
