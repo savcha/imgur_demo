@@ -17,12 +17,15 @@
         <lable id="logo">IMGUR</lable>
         <input type="button" value="Take Picture" onclick="snap()"/>
         <input type="button" value="Choose from Gallery" onclick="choose()"/>
-        <a href="#submit">to submit</a>
+        <div data-role="footer">
+            <a href="#submit">Back To Main</a>
+        </div>
     </div>
 </div>
 
 <div data-role="page" data-theme="a" id="submit">
     <div data-role="content">
+        <img style="height:300px;width:300px" id="image">
         <lable>Image Title</lable><input type="text"/>
         <lable>Caption</lable><input type="text"/>
         <input type="button" value="Submit" onclick="submit()"/>

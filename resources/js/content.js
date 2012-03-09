@@ -19,9 +19,10 @@ function choose(){
 
 function onSuccess(imageData) {
     console.log('image successfully taken');
-//    currentImage = imageData;
-    console.log('trying to change page');
-    $.mobile.changePage( "#submit", { transition: "slide"} );
+    currentImage = imageData;
+    var img = document.getElementById('image');
+//    $.mobile.changePage( "#submit", { transition: "slide"} );
+    location.href = '#submit';
     console.log('changed page')
 }
 
