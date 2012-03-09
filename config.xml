@@ -19,7 +19,7 @@
     <icon src="resources/icons/icon-android-48.png" width="48" height="48"/>
     <icon src="resources/icons/icon-android-72.png" width="72" height="72"/>
 
-    <gap:splash src="resources/icons/splash.png"/>
+    <gap:splash src="resources/icons/splash.gif"/>
 
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
