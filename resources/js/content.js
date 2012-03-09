@@ -9,7 +9,20 @@ document.addEventListener("deviceready", function(){
 console.log('setting up snap');
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(onSuccess, onFail, {});
+
+    if(navigator){
+        console.log('navigator defined');
+        if(navigator.camera){
+            console.log('camera defined');
+            navigator.camera.getPicture(onSuccess, onFail, {});
+        }
+        else console.log('camera not defined');
+    }
+    else console.log('navigator not defined');
+}
+
+function choose(){
+    console.log('choose called');
 }
 
 function onSuccess(imageData) {
