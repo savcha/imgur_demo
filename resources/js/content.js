@@ -58,8 +58,8 @@ function submit(){
 function postSuccess(jsonResponse){
     //todo show link to picture and removal link
 
-    $.mobile.changePage( "#successful", { transition: "slide"} );
-//    location.href = '#successful'
+//    $.mobile.changePage( "#successful", { transition: "slide"} );
+    location.href = '#successful'
     setTimeout(function(){
         $.mobile.changePage( "#main", { transition: "slide"} );
 //        location.href = '#main';

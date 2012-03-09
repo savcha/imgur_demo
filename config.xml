@@ -22,6 +22,7 @@
     <gap:splash src="resources/icons/splash.gif"/>
 
     <feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
 
     <preference name="orientation" value="portrait" />
 </widget>
