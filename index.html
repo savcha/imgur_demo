@@ -12,7 +12,7 @@
     <script type="text/javascript" src="resources/js/content.js"></script>
 </head>
 <body>
-<div data-role="page" id="main">
+<div data-role="page" data-theme="a" id="main">
     <div data-role="content">
         <lable id="logo">IMGUR</lable>
         <input type="button" value="Take Picture" onclick="snap()"/>
@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<div data-role="page" id="submit">
+<div data-role="page" data-theme="a" id="submit">
     <div data-role="content">
         <input type="button" value="Submit" onclick="submit()"/>
         <input type="button" value="Cancel" onclick="location.href = '#main'"/>
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<div data-role="page" id="submitted">
+<div data-role="page" data-theme="a" id="submitted">
     <div data-role="content">
         <lable>Successfully submitted</lable>
     </div>
