@@ -13,18 +13,26 @@
 </head>
 <body>
 <div data-role="page" id="main">
-    <lable id="logo">IMGUR</lable>
-    <input type="button" value="Take Picture" onclick="snap()"/>
-    <input type="button" value="Choose from Gallery" onclick="choose()"/>
+    <div data-role="content">
+        <lable id="logo">IMGUR</lable>
+        <input type="button" value="Take Picture" onclick="snap()"/>
+        <input type="button" value="Choose from Gallery" onclick="choose()"/>
+        <a href="#submit">to submit</a>
+    </div>
 </div>
 
 <div data-role="page" id="submit">
-    <input type="button" value="Submit" onclick="submit"/>
-    <input type="button" value="Cancel" onclick="location.href = '#main'"/>
+    <div data-role="content">
+        <input type="button" value="Submit" onclick="submit()"/>
+        <input type="button" value="Cancel" onclick="location.href = '#main'"/>
+        <a href="#main">to main</a>
+    </div>
 </div>
 
 <div data-role="page" id="submitted">
-    <lable>Successfully submitted</lable>
+    <div data-role="content">
+        <lable>Successfully submitted</lable>
+    </div>
 </div>
 </body>
 </html>

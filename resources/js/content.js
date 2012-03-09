@@ -19,7 +19,7 @@ function choose(){
 
 function onSuccess(imageData) {
     console.log('image successfully taken');
-    currentImage = imageData;
+//    currentImage = imageData;
     location.href = '#submit';
 }
 
