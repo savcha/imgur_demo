@@ -12,3 +12,8 @@ div input {
     margin: 5px;
     text-align: center;
 }
+
+#image {
+    height: 300px;
+    width: 300px;
+}
