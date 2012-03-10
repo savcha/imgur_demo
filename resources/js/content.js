@@ -61,12 +61,12 @@ function postSuccess(jsonResponse){
     //todo show link to picture and removal link
     console.log('post success called');
     console.log(jsonResponse);
-
-    console.log('original link is '+jsonResponse['links']['original']+', delete link is '+jsonResponse['links']['delete_page']);
+    console.log('about to log');
+    console.log('original link is '+jsonResponse['upload']['links']['original']+', delete link is '+jsonResponse['upload']['links']['delete_page']);
 
     console.log('setting links');
-    $('#imgur_link').html(jsonResponse['links']['original']);
-    $('#delete_link').html(jsonResponse['links']['delete_page']);
+    $('#imgur_link').html(jsonResponse['upload']['links']['original']);
+    $('#delete_link').html(jsonResponse['upload']['links']['delete_page']);
     goToSubmitted();
 }
 
