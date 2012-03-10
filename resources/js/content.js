@@ -65,8 +65,8 @@ function postSuccess(jsonResponse){
     console.log('original link is '+jsonResponse['upload']['links']['original']+', delete link is '+jsonResponse['upload']['links']['delete_page']);
 
     console.log('setting links');
-    $('#imgur_link').html(jsonResponse['upload']['links']['original']);
-    $('#delete_link').html(jsonResponse['upload']['links']['delete_page']);
+    $('#imgur_link').val(jsonResponse['upload']['links']['original']);
+    $('#delete_link').val(jsonResponse['upload']['links']['delete_page']);
     goToSubmitted();
 }
 
