@@ -3,7 +3,7 @@ var currentImage;
 
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(onSuccess, onFail);
+    navigator.camera.getPicture(onSuccess, onFail, {destinationType : Camera.DestinationType.DATA_URL});
 }
 
 function choose(){
@@ -34,6 +34,7 @@ function submit(){
     var caption = $('#image_title').val();
 
     console.log('title is '+title+', caption is '+caption);
+    goToSending();
 
     $.ajax({
         url: 'http://api.imgur.com/2/upload.json',
@@ -61,8 +62,10 @@ function postSuccess(jsonResponse){
     console.log(jsonResponse);
     goToSubmitted();
 
+    console.log('original link is '+jsonResponse['links']['original']+', delete link is '+jsonResponse['links']['delete_page'])
+
     $('#imgur_link').html(jsonResponse['links']['original']);
-    $('#imgur_link').html(jsonResponse['links']['delete_page']);
+    $('#delete_link').html(jsonResponse['links']['delete_page']);
 
     /*setTimeout(function(){
         $.mobile.changePage( "#main", { transition: "slide"} );
@@ -76,6 +79,10 @@ function goToMain(){
 
 function goToSubmit(){
     $.mobile.changePage( "#submit", { transition: "slide"} );
+}
+
+function goToSending(){
+    $.mobile.changePage( "#sending", { transition: "slide"} );
 }
 
 function goToSubmitted(){
