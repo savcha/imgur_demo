@@ -14,7 +14,7 @@
 <body>
 <div data-role="page" data-theme="a" id="main">
     <div data-role="content">
-        <lable id="logo">IMGUR</lable>
+        <lable id="logo" style="text-align: center; font-size: 16px">IMGUR</lable>
         <input type="button" value="Take Picture" onclick="snap()"/>
         <input type="button" value="Choose from Gallery" onclick="choose()"/>
     </div>
@@ -26,16 +26,21 @@
         <lable>Image Title</lable><input id="image_title" type="text"/>
         <lable>Caption</lable><input id="image_caption" type="text"/>
         <input type="button" value="Submit" onclick="submit()"/>
-        <input type="button" value="Cancel" onclick="location.href = '#main'"/>
+        <input type="button" value="Cancel" onclick="goToMain()"/>
     </div>
     <div data-role="footer">
-        <span href="#submit">Back To Main</span>
+        <input type="button" onclick="goToMain()">Back To Main</input>
     </div>
 </div>
 
 <div data-role="page" data-theme="a" id="submitted">
     <div data-role="content">
-        <lable>Successfully submitted</lable>
+        <lable style="text-align: center; font-size: 14px">Successfully submitted</lable>
+        <label>Imgur link</label><span id="imgur_link"></span>
+        <label>Delete link</label><span id="delete_link"></span>
+    </div>
+    <div data-role="footer">
+        <input type="button" onclick="goToMain()">Back To Main</input>
     </div>
 </div>
 </body>

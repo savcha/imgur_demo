@@ -3,10 +3,7 @@ var currentImage;
 
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(onSuccess, onFail, {
-        sourceType : Camera.PictureSourceType.CAMERA,
-        destinationType : Camera.DestinationType.DATA_URL
-    });
+    navigator.camera.getPicture(onSuccess, onFail);
 }
 
 function choose(){
@@ -22,8 +19,7 @@ function onSuccess(imageData) {
     currentImage = imageData;
     var image = document.getElementById('image');
     image.src = image.src = "data:image/jpeg;base64," + imageData;
-    $.mobile.changePage( "#submit", { transition: "slide"} );
-//    location.href = '#submit';
+    goToSubmit();
 }
 
 function onFail(message) {
@@ -62,11 +58,26 @@ function submit(){
 
 function postSuccess(jsonResponse){
     //todo show link to picture and removal link
+    console.log(jsonResponse);
+    goToSubmitted();
 
-//    $.mobile.changePage( "#successful", { transition: "slide"} );
-    location.href = '#submitted';
-    setTimeout(function(){
+    $('#imgur_link').html(jsonResponse['links']['original']);
+    $('#imgur_link').html(jsonResponse['links']['delete_page']);
+
+    /*setTimeout(function(){
         $.mobile.changePage( "#main", { transition: "slide"} );
-//        location.href = '#main';
-    }, 3000)
+    }, 3000)*/
+}
+
+//Navigation
+function goToMain(){
+    $.mobile.changePage( "#main", { transition: "slide"} );
+}
+
+function goToSubmit(){
+    $.mobile.changePage( "#submit", { transition: "slide"} );
+}
+
+function goToSubmitted(){
+    $.mobile.changePage( "#submitted", { transition: "slide"} );
 }
