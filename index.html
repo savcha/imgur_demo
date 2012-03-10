@@ -34,19 +34,21 @@
 </div>
 
 <div data-role="page" id="sending">
-    <h1>sending content to Imgur</h1>
+    <div data-role="content">
+        <h1>sending content to Imgur</h1>
+    </div>
 </div>
 
 <div data-role="page" data-theme="a" id="submitted">
     <div data-role="content">
-        <h2>Successfully submitted</h2>
+        <h2>Successfully Submitted</h2>
         <label>Imgur link</label>
-        <input id="imgur_link" type="text" editable="false" />
+        <input id="imgur_link" type="text" readonly/>
         <label>Delete link</label>
-        <input id="delete_link" type="text" editable="false"/>
+        <input id="delete_link" type="text" readonly/>
     </div>
     <div data-role="footer">
-        <input type="button" onclick="goToMain()">Back To Main</input>
+        <input type="button" onclick="goToMain()" value="Back To Main"/>
     </div>
 </div>
 </body>

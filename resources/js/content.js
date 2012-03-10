@@ -10,15 +10,15 @@ function choose(){
     console.log('choose called');
     navigator.camera.getPicture(onSuccess, onFail, {
         sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
-        destinationType : Camera.DestinationType.DATA_URL
+        destinationType : Camera.DestinationType.FILE_URI
     });
 }
 
 function onSuccess(imageData) {
     console.log('image successfully taken');
     currentImage = imageData;
-    var image = document.getElementById('image');
-    image.src = image.src = "data:image/jpeg;base64," + imageData;
+    $('#image').attr('src', imageData);
+//    image.src = image.src = "data:image/jpeg;base64," + imageData;
     goToSubmit();
 }
 
@@ -26,7 +26,7 @@ function onFail(message) {
     alert('Failed because: ' + message);
 }
 
-function submit(){
+/*function submit(){
 
     console.log('submit called');
 
@@ -35,6 +35,8 @@ function submit(){
 
     console.log('title is '+title+', caption is '+caption);
     goToSending();
+
+
 
     $.ajax({
         url: 'http://api.imgur.com/2/upload.json',
@@ -67,10 +69,10 @@ function postSuccess(jsonResponse){
     $('#imgur_link').html(jsonResponse['links']['original']);
     $('#delete_link').html(jsonResponse['links']['delete_page']);
 
-    /*setTimeout(function(){
+    *//*setTimeout(function(){
         $.mobile.changePage( "#main", { transition: "slide"} );
-    }, 3000)*/
-}
+    }, 3000)*//*
+}*/
 
 //Navigation
 function goToMain(){
