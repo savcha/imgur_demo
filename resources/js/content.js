@@ -1,9 +1,8 @@
 var API_KEY = 'ecb3c9429017e1310b52e91afeb50175';
-var currentImage;
 
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(onSuccess, onFail, {destinationType : Camera.DestinationType.DATA_URL});
+    navigator.camera.getPicture(onSuccess, onFail);
 }
 
 function choose(){
@@ -18,7 +17,6 @@ function onSuccess(imageData) {
     console.log('image successfully taken');
     currentImage = imageData;
     $('#image').attr('src', imageData);
-//    image.src = image.src = "data:image/jpeg;base64," + imageData;
     goToSubmit();
 }
 
@@ -26,7 +24,7 @@ function onFail(message) {
     alert('Failed because: ' + message);
 }
 
-/*function submit(){
+function submit(){
 
     console.log('submit called');
 
@@ -36,43 +34,45 @@ function onFail(message) {
     console.log('title is '+title+', caption is '+caption);
     goToSending();
 
-
-
-    $.ajax({
-        url: 'http://api.imgur.com/2/upload.json',
-        type: 'POST',
-        data: {
-            key: API_KEY,
-            type: 'base64',
-            title: title,
-            caption: caption,
-            image: currentImage
-        },
-        success: function(data){
-            console.log('ajax success');
-            postSuccess(data);
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-            console.log('ajax fail');
-            alert('Imgur submission failed because: ' + textStatus);
-        }
-    })
+    var reader = new FileReader();
+    reader.onloadend = function(evt) {
+        console.log("read success "+evt.target.result);
+        $.ajax({
+            url: 'http://api.imgur.com/2/upload.json',
+            type: 'POST',
+            data: {
+                key: API_KEY,
+                type: 'base64',
+                title: title,
+                caption: caption,
+                image: evt.target.result
+            },
+            success: function(data){
+                console.log('ajax success');
+                postSuccess(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log('ajax fail');
+                alert('Imgur submission failed because: ' + textStatus);
+            }
+        })
+    };
+    console.log('fetching image')
+    var imageURL = $('#image').attr('src');
+    reader.readAsDataURL(imageURL);
 }
 
 function postSuccess(jsonResponse){
     //todo show link to picture and removal link
+    console.log('post success called');
     console.log(jsonResponse);
     goToSubmitted();
+    console.log('original link is '+jsonResponse['links']['original']+', delete link is '+jsonResponse['links']['delete_page']);
 
-    console.log('original link is '+jsonResponse['links']['original']+', delete link is '+jsonResponse['links']['delete_page'])
-
+    console.log('setting links')
     $('#imgur_link').html(jsonResponse['links']['original']);
     $('#delete_link').html(jsonResponse['links']['delete_page']);
-
-    *//*setTimeout(function(){
-        $.mobile.changePage( "#main", { transition: "slide"} );
-    }, 3000)*//*
-}*/
+}
 
 //Navigation
 function goToMain(){
