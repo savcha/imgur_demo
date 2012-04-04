@@ -3,10 +3,7 @@ var currentImage;
 
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(onSuccess, onFail, {
-        destinationType : 0, //return as base 64 string
-        sourceType : Camera.PictureSourceType.CAMERA
-    });
+    navigator.camera.getPicture(onSuccess, onFail);
     //alert('Failed because phonegap has a broken api');
 }
 
@@ -19,7 +16,7 @@ function choose(){
 }
 
 function onSuccess(imageData) {
-    console.log('image successfully taken');
+    console.log('image successfully taken'+imageData);
     currentImage = imageData;
     $('#image').attr('src', "data:image/jpeg;base64," + imageData);
     goToSubmit();
