@@ -3,7 +3,10 @@ var currentImage;
 
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(onSuccess, onFail, {destinationType : Camera.DestinationType.DATA_URL});
+    navigator.camera.getPicture(onSuccess, onFail, {
+        destinationType : 0, //return as base 64 string
+        sourceType : Camera.PictureSourceType.CAMERA
+    });
     //alert('Failed because phonegap has a broken api');
 }
 
