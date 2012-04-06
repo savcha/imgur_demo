@@ -22,9 +22,10 @@ function choose(){
 
 
 function snap(){
-    navigator.camera.captureImage(onSuccess, onFail, {
-        destinationType : Camera.DestinationType.DATA_URI
-    })
+    navigator.device.capture.captureImage(function(mediaFiles){
+        console.log('length of media files array is '+mediaFiles.length);
+        onSuccess(mediaFiles[0].fullPath)
+    }, onFail)
 }
 
 function choose(){
@@ -44,7 +45,7 @@ function choose(){
 }*/
 
 function onSuccess(imageSource) {
-    console.log('image successfully taken'+imageSource);
+    console.log('image successfully taken '+imageSource);
     $('#image').attr('src', imageSource);
     goToSubmit();
 }
@@ -62,6 +63,8 @@ function submit(){
 
     console.log('title is '+title+', caption is '+caption);
     goToSending();
+
+
 
     $.ajax({
         url: 'http://api.imgur.com/2/upload.json',
