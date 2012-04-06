@@ -1,26 +1,22 @@
 var API_KEY = 'ecb3c9429017e1310b52e91afeb50175';
 var currentImage;
 
-document.addEventListener("deviceready", function(){
-    var id = setInterval(function(){
-        console.log('phonegap ready')
-    }, 1000);
-    setTimeout(function(){
-        clearInterval(id)
-    }, 7000);
-}, false);
-
 function snap(){
     console.log('snap called');
-    navigator.camera.getPicture(onSuccess, onFail, {destinationType : Camera.DestinationType.DATA_URL});
-    //alert('Failed because phonegap has a broken api');
+    navigator.device.capture.captureImage(onSuccess, onFail, {
+        destinationType : Camera.DestinationType.DATA_URL,
+        targetWidth: 300,
+        targetHeight: 300
+    });
 }
 
 function choose(){
     console.log('choose called');
     navigator.camera.getPicture(onSuccess, onFail, {
         sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
-        destinationType : Camera.DestinationType.DATA_URL
+        destinationType : Camera.DestinationType.DATA_URL,
+        targetWidth: 300,
+        targetHeight: 300
     });
 }
 
