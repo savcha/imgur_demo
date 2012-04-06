@@ -1,7 +1,7 @@
 var API_KEY = 'ecb3c9429017e1310b52e91afeb50175';
 var currentImage;
 
-function snap(){
+/*function snap(){
     console.log('snap called');
     navigator.device.capture.captureImage(onSuccess, onFail, {
         destinationType : Camera.DestinationType.DATA_URL,
@@ -18,12 +18,34 @@ function choose(){
         targetWidth: 300,
         targetHeight: 300
     });
+}*/
+
+
+function snap(){
+    navigator.camera.captureImage(onSuccess, onFail, {
+        destinationType : Camera.DestinationType.DATA_URI
+    })
 }
 
-function onSuccess(imageData) {
+function choose(){
+    console.log('choose called');
+    navigator.camera.getPicture(onSuccess, onFail, {
+        sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType : Camera.DestinationType.DATA_URI
+    });
+}
+
+
+/*function onSuccess(imageData) {
     console.log('image successfully taken'+imageData);
     currentImage = imageData;
     $('#image').attr('src', "data:image/jpeg;base64," + imageData);
+    goToSubmit();
+}*/
+
+function onSuccess(imageSource) {
+    console.log('image successfully taken'+imageSource);
+    $('#image').attr('src', imageSource);
     goToSubmit();
 }
 
