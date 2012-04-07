@@ -64,9 +64,11 @@ function submit(){
     console.log('title is '+title+', caption is '+caption);
     goToSending();
 
-    var fileURI = document.getElementById('image').src
+    var fileURI = $('#image').attr('src');
+    console.log('file uri is '+fileURI);
 
     var options = new FileUploadOptions();
+    console.log('file options created');
     options.fileKey="file";
     options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
     options.mimeType="image/jpeg";
@@ -75,8 +77,10 @@ function submit(){
         title: title,
         caption: caption
     }
+    console.log('file parameters added');
 
     var ft = new FileTransfer();
+    console.log('file transfer created');
     ft.upload(
         fileURI,
         "http://api.imgur.com/2/upload.json",
@@ -89,11 +93,13 @@ function submit(){
             postSuccess(data);
         },
         function(error){
+            console.log('error callback');
             alert("An error has occurred: Code = " + error.code);
             console.log("upload error source " + error.source);
             console.log("upload error target " + error.target);
         },
         options);
+    console.log('ft upload called');
 
     /*$.ajax({
         url: 'http://api.imgur.com/2/upload.json',
